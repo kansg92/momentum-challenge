@@ -3,44 +3,24 @@
 // querySelectorAll : 모든 elements를 가져온다.
 const h1 = document.querySelector(".hello h1"); 
 
+
 function handleTitleClick(){
-    console.log("title was clicked!");
-    h1.style.color="blue";
+    const clickedClass = "clicked";
+    // if(h1.className === clickedClass) {
+    //     h1.className = "";
+    // }else{
+    //     h1.className = clickedClass;
+    // }
+
+    // classList 기존에 가지고있는 class를 유지한체로 추가가 가능.
+    // if(h1.classList.contains(clickedClass)) {
+    //     h1.classList.remove(clickedClass);
+    // }else{
+    //     h1.classList.add(clickedClass);
+    // }
+
+    // toggle ->  classList에서 있으면 제거, 없으면 추가 해줌. like switch on off
+    h1.classList.toggle(clickedClass);
 }
 
-function handleMouseEnter(){
-    h1.innerText = "mouse is here!"
-
-}
-
-function handleMouseLeave( ){
-    h1.innerText = "mouse is gone!"
-}
-
-function handleWindowResize(){
-    document.body.style.background = "coral";
-}
-
-function handleWindowCopy(){
-    alert("copier!!")
-}
-
-function handleWindowOffline(){
-    alert("SOS no WIFI!")
-}
-
-
-function handleWindowOnline(){
-    alert("ALL GOOOOOD")
-}
-
-// 2가지 형식으로 함수를 실행 시킬수 있다.
 h1.onclick = handleTitleClick;
-h1.addEventListener("mouseenter",handleMouseEnter);
-h1.addEventListener("mouseleave",handleMouseLeave);
-
-
-window.addEventListener("resize",handleWindowResize);
-window.addEventListener("copy", handleWindowCopy);
-window.addEventListener("offline", handleWindowOffline);
-window.addEventListener("online", handleWindowOnline);
