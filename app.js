@@ -1,26 +1,31 @@
+// const loginForm = document.querySelector("#login-form");
+// const loginInput = loginForm.querySelector("input");
+// const loginButton = loginForm.querySelector("button");
 
-// querySelector : css 방식으로 first elements를 찾을 수 있다.
-// querySelectorAll : 모든 elements를 가져온다.
-const h1 = document.querySelector(".hello h1"); 
+// 위 코드를 아래와 같이 줄일수 있다.
+// const loginInput = document.querySelector("#login-form input");
+// const loginButton = document.querySelector("#login-form button");
 
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
 
-function handleTitleClick(){
-    const clickedClass = "clicked";
-    // if(h1.className === clickedClass) {
-    //     h1.className = "";
-    // }else{
-    //     h1.className = clickedClass;
-    // }
+// String만 포함된 변수는 관습적으로 대문자로 정의한다.
+const HIDDEN_CLASSNAME = "hidden";
 
-    // classList 기존에 가지고있는 class를 유지한체로 추가가 가능.
-    // if(h1.classList.contains(clickedClass)) {
-    //     h1.classList.remove(clickedClass);
-    // }else{
-    //     h1.classList.add(clickedClass);
-    // }
+function onLoginSubmit(event){
+    event.preventDefault();
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+    const username = loginInput.value;
+    
+    // JS에서 String을 작성하는 2가지 방법.
+    greeting.innerText = "Hello " + username;
+    greeting.innerText = `Hello ${username}`;
 
-    // toggle ->  classList에서 있으면 제거, 없으면 추가 해줌. like switch on off
-    h1.classList.toggle(clickedClass);
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+    console.log(greeting);
 }
 
-h1.onclick = handleTitleClick;
+loginForm.addEventListener("submit", onLoginSubmit);
+
+
