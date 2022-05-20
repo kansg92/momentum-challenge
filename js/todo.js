@@ -15,13 +15,14 @@ function deleteToDo(event){
     // console.dir(event.target.parentElement) path 를통해 어떤 것을 선택했는지 알 수 있다.
     const li = event.target.parentElement;
     li.remove();
-
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+    saveToDos();
 }
 
 function paintToDo(newTodo){
     const li = document.createElement('li');
     const span = document.createElement('span');
-    span.innerText = newTodo;
+    span.innerText = newTodo.text;
     const button = document.createElement('button');
     button.innerText = "❌";
     button.addEventListener("click",deleteToDo );
@@ -37,8 +38,12 @@ function handleToDoSubmit(event){
     // console.log(toDoInput.value); <----- 입력값은 newTodo로 바꾸어 넘어가고, 내부 칸은 초기화됨.
     toDoInput.value = '';
     // console.log("new:" + newTodo, "todo:"+toDoInput.value); ;
-    toDos.push(newTodo);
-    paintToDo(newTodo);
+    const newTodoObj = {
+        text : newTodo,
+        id : Date.now(),
+    };
+    toDos.push(newTodoObj);
+    paintToDo(newTodoObj);
     saveToDos();
 };
 
@@ -55,4 +60,7 @@ if(savedToDos !== null){
 };
 
 
+function sexyFilter(   ){
 
+
+}
